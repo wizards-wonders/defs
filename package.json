@@ -1,0 +1,23 @@
+{
+  "name": "com.wizards-wonders.defs",
+  "version": "1.0.0",
+  "displayName": "W&W Defs",
+  "description": "Base Data Containers and other reqired Libs",
+  "unity": "2019.1",
+  "unityRelease": "0b5",
+  "documentationUrl": "TBD",
+  "changelogUrl": "TBD",
+  "licensesUrl": "TBD",
+  "keywords": [
+    "Wrath",
+    "Wizards",
+    "Wonders",
+    "Pixelakes"
+  ],
+  "author": {
+    "name": "abuffie",
+    "email": "apbuffie@gmail.com",
+    "url": ""
+  },
+  "type": "library"
+}
