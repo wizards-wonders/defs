@@ -12,6 +12,32 @@ namespace Pixelakes.Wrath{
     using UnityEngine;
 
     public class CardData{
+        
+        [SerializeField, JsonProperty] new string name;                // the name for the card
+        [SerializeField, JsonProperty] string quote;                  // if this card has a quote or some lore
+        [SerializeField, JsonProperty, JsonConverter(typeof(StringEnumConverter))] Type     type;
+        [SerializeField, JsonProperty, JsonConverter(typeof(StringEnumConverter))] Faction  faction;
+        [SerializeField, JsonProperty, JsonConverter(typeof(StringEnumConverter))] SubType  subType;
+        [SerializeField, JsonProperty, JsonConverter(typeof(StringEnumConverter))] Race     race;
+        [SerializeField, JsonProperty, JsonConverter(typeof(StringEnumConverter))] Rarity   rarity;
+        [SerializeField, JsonProperty] CardSeriesScriptable series;
+
+        [SerializeField,Range(0,20), JsonProperty] int pointValue;    // base point value
+        [SerializeField, JsonProperty] int health;                    // ??
+        [SerializeField, JsonProperty] int shield;                    // ??
+        [SerializeField, JsonProperty] int summonCost;                // ??        
+        [SerializeField, JsonProperty] int provisions;                // ??        
+        [SerializeField, JsonProperty] AbilityData[] abilities;
+
+
+        public string Name          => name;
+        public string Quote         => quote;         
+        public int PointValue       => pointValue;
+        public Type     Type        => type;
+        public Faction  Faction     => faction;
+        public SubType  SubType     => subType;
+        public Race     Race        => race;
+        public Rarity   Rarity      => rarity;
 
     }
 }

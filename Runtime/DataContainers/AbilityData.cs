@@ -27,12 +27,12 @@ namespace Pixelakes.Wrath{
         [SerializeField, JsonProperty] int      offeringValue;
         [SerializeField, JsonProperty] int      uses;        
         [SerializeField, JsonProperty] bool[]   lanes;
-        [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public AbilityType   type            { get=> enum_type; } 
-        [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Trigger       trigger         { get=> enum_trigger; }   
-        [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Effect        action          { get=> enum_action; }      
-        [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Effect        offering        { get=> enum_offering; } 
-        [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Target        actionTarget    { get=> enum_actionTarget; } 
-        [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Target        offeringTarget  { get=> enum_offeringTarget; }
+        [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public AbilityType   type;            
+        [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Trigger       trigger;         
+        [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Effect        action;          
+        [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Effect        offering;       
+        [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Target        actionTarget;    
+        [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Target        offeringTarget;  
         
 
 
@@ -60,12 +60,6 @@ namespace Pixelakes.Wrath{
         public string ActionTargetString     { get => $"{JsonUtilities.EnumToString<Target>(actionTarget)}";}
         public string OfferingTargetString   { get => $"{JsonUtilities.EnumToString<Target>(offeringTarget)}";}
 
-
-        public override string ToString(){
-            return JsonUtility.ToJson(this);
-        }
-
-    
 
         /// <summary>
         /// Returns a formated string we can use in UI Text
