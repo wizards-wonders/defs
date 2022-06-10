@@ -21,7 +21,7 @@ namespace Pixelakes.Wrath{
         [SerializeField, JsonProperty, JsonConverter(typeof(StringEnumConverter))] SubType  subType;
         [SerializeField, JsonProperty, JsonConverter(typeof(StringEnumConverter))] Race     race;
         [SerializeField, JsonProperty, JsonConverter(typeof(StringEnumConverter))] Rarity   rarity;
-        [SerializeField, JsonProperty] CardSeriesScriptable series;
+        [SerializeField, JsonProperty] SeriesData series;
 
         [SerializeField,Range(0,20), JsonProperty] int pointValue;    // base point value
         [SerializeField, JsonProperty] int health;                    // ??
