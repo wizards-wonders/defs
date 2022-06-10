@@ -1,6 +1,6 @@
 {
     "name": "Enums",
-    "rootNamespace": "Pixelakes.Wrath.Enums",
+    "rootNamespace": "Pixelakes",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
