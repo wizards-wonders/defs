@@ -7,14 +7,15 @@
 /// </summary>
 
 namespace Pixelakes.Wrath{
-    using System.Collections;
-    using System.Collections.Generic;
+
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
     using UnityEngine;
     using Enums;
 
     public class CardData{
         
-        [SerializeField, JsonProperty] new string name;                // the name for the card
+        [SerializeField, JsonProperty] string name;                // the name for the card
         [SerializeField, JsonProperty] string quote;                  // if this card has a quote or some lore
         [SerializeField, JsonProperty, JsonConverter(typeof(StringEnumConverter))] Type     type;
         [SerializeField, JsonProperty, JsonConverter(typeof(StringEnumConverter))] Faction  faction;

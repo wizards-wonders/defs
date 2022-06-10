@@ -54,11 +54,11 @@ namespace Pixelakes.Wrath{
         public bool Lane(int lane)          => (lane<0||lane>=lanes.Length) ? false : lanes[lane];
 
         
-        public string TriggerString          { get => $"{JsonUtilities.EnumToString<Trigger>(trigger)}";}
-        public string ActionString           { get => $"{JsonUtilities.EnumToString<Effect>(action)}";}
-        public string OfferingString         { get => $"{JsonUtilities.EnumToString<Effect>(offering)}";}
-        public string ActionTargetString     { get => $"{JsonUtilities.EnumToString<Target>(actionTarget)}";}
-        public string OfferingTargetString   { get => $"{JsonUtilities.EnumToString<Target>(offeringTarget)}";}
+        public string TriggerString          { get => $"{Helpers.EnumToString<Trigger>(trigger)}";}
+        public string ActionString           { get => $"{Helpers.EnumToString<Effect>(action)}";}
+        public string OfferingString         { get => $"{Helpers.EnumToString<Effect>(offering)}";}
+        public string ActionTargetString     { get => $"{Helpers.EnumToString<Target>(actionTarget)}";}
+        public string OfferingTargetString   { get => $"{Helpers.EnumToString<Target>(offeringTarget)}";}
 
 
         /// <summary>

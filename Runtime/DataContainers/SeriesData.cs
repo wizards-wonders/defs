@@ -7,10 +7,9 @@
 /// </summary>
 
 namespace Pixelakes.Wrath{
-    using System.Collections;
-    using System.Collections.Generic;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
     using UnityEngine;
-    using Enums;
 
     [JsonObject(MemberSerialization.OptIn)]
     public class SeriesData {
