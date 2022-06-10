@@ -1,9 +1,7 @@
 {
     "name": "com.wizards-wonders.defs.Runtime",
     "rootNamespace": "",
-    "references": [
-        "GUID:d9298a1fee3e62d43aecbc6b0363b324"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
