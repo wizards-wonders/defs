@@ -7,11 +7,12 @@
 /// </summary>
 
 namespace Pixelakes.Wrath{
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
+    
+    using System;
     using UnityEngine;
-
-    [JsonObject(MemberSerialization.OptIn)]
+    using Newtonsoft.Json;
+    
+    [Serializable, JsonObject(MemberSerialization.OptIn)]
     public class SeriesData {
 
         [SerializeField, JsonProperty] string seriesName;        

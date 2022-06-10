@@ -8,13 +8,14 @@
 
 namespace Pixelakes.Wrath{
 
-    using Enums; 
+    using Enums;
+    using System;
     using UnityEngine;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     
 
-    [System.Serializable, JsonObject(MemberSerialization.OptIn)]
+    [Serializable, JsonObject(MemberSerialization.OptIn)]
     public class AbilityData {
         
 

@@ -7,12 +7,14 @@
 /// </summary>
 
 namespace Pixelakes.Wrath{
-
+    using Enums;
+    using System;
+    using UnityEngine;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
-    using UnityEngine;
-    using Enums;
-
+    using Type = Enums.Type;
+    
+    [Serializable]
     public class CardData{
         
         [SerializeField, JsonProperty] string name;                // the name for the card
@@ -32,14 +34,15 @@ namespace Pixelakes.Wrath{
         [SerializeField, JsonProperty] AbilityData[] abilities;
 
 
-        public string Name          => name;
-        public string Quote         => quote;         
-        public int PointValue       => pointValue;
-        public Type     Type        => type;
-        public Faction  Faction     => faction;
-        public SubType  SubType     => subType;
-        public Race     Race        => race;
-        public Rarity   Rarity      => rarity;
+        public string       Name        => name;
+        public string       Quote       => quote;         
+        public int          PointValue  => pointValue;
+        public Type         Type        => type;
+        public Faction      Faction     => faction;
+        public SubType      SubType     => subType;
+        public Race         Race        => race;
+        public Rarity       Rarity      => rarity;
+        public SeriesData   Series      => series;
 
     }
 }
