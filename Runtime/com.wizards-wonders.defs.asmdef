@@ -1,6 +1,6 @@
 {
     "name": "com.wizards-wonders.defs",
-    "rootNamespace": "Pixelakes.Wrath",
+    "rootNamespace": "Pixelakes",
     "references": [
         "GUID:d9298a1fee3e62d43aecbc6b0363b324"
     ],
