@@ -43,6 +43,7 @@ namespace Pixelakes.Wrath{
         public Race         Race        => race;
         public Rarity       Rarity      => rarity;
         public SeriesData   Series      => series;
+        public AbilityData[] Abilities  => abilities;
 
     }
 }
