@@ -1,38 +1,53 @@
 namespace Pixelakes.Wrath.Enums {
-
-    //currently abilities and modifiers should probalby use targetTypes, but anything that wants to target something should use these
-    public enum Target{
-        None                = 0,
-        Player              = 1, // Player would not be the card but something on the player 
-        Opponent            = 2, // Opponent would not be a card but somthing on the oppent
-        AllPlayers          = 3,
-        RandomPlayer        = 4, // chooses the play at random
-        ThisCard            = 5, // The card using the ability
-        PlayerCard          = 6, // any player card in play
-        OpponentCard        = 7, // any Opponent card in play
-        RandomPlayerCard    = 8, // random player card in play
-        RandomOpponentCard  = 9, // random Opponent card in play
-        RandomCard          = 10, // random card in play
-        AllPlayerCards      = 11, // all of the player cards in play
-        AllOpponentCards    = 12, // all of the Opponent cards in play
-        AllCards            = 13, // all  cards in play
-        PlayerCommander     = 14,
-        OpponentCommander   = 15,
-        PlayerArtifact      = 16,
-        OpponentArtifact    = 17,
-        CardOnLeft          = 18, //Card to left when placed
-        CardOnRight         = 19, //Card to Right when Placed
-        PlacedRow           = 20, //all cards in row placed into
-        SelectedRow         = 21, //all cards in row selected by player
-        RaceOpponent        = 22, //all cards of opponents of specific race
-        RacePlayer          = 23, //all cards of players of specific race
-        OppositeRow         = 24, //all cards in row opposite placed
-        SubTypeOpponent     = 25, //all cards of opponents of specific subtype
-        SubTypePlayer       = 26, //all cards of players of specific subtype
-        StrongestOpponent   = 27, //strongest opponent unit
-        WeakestOpponent     = 28, //weakest opponent unit
-        StrongestPlayer     = 29, //strongest player unit
-        WeakestPlayer       = 30, //weakest player unit
-        Neighbors           = 31, //cards on both sides when placed
-    }
+	public enum Target{
+		None				= 0, //No Target
+		Player				= 100, //Player would not be the card but something on the player, like skip turn or reduce points
+		Opponent				= 101, //Opponent would not be a card but something on the opponent, like skip turn or reduce points
+		AllPlayers				= 103, //1 and 2
+		RandomPlayer				= 104, //Chooses the player at random
+		PlayerHand				= 105, //Cards in the player's hand
+		OpponentHand				= 106, //Cards in the opponent's hand
+		PlayerDeck				= 107, //Player's remaining Cards in Deck
+		OpponentDeck				= 108, //Player's remaining Cards in Deck
+		ThisCard				= 200, //The card using the ability
+		PlayerCard				= 201, //Initiator chooses any player card in play
+		OpponentCard				= 202, //Initiator chooses any Opponent card in play
+		RandomPlayerCard				= 203, //System picks random player card in play
+		RandomOpponentCard				= 204, //System picks random Opponent card in play
+		RandomCard				= 205, //System picks random card in play
+		AllPlayerCards				= 206, //All of the player cards in play
+		AllOpponentCards				= 207, //All of the Opponent cards in play
+		AllCards				= 208, //All cards in play
+		CardOnLeft				= 209, //Card to left of card
+		CardOnRight				= 210, //Card to Right of card
+		Neighbors				= 211, //ards on both sides of card
+		PlayerCommander				= 300, //Player's Commnader
+		OpponentCommander				= 301, //Opponent's Commander
+		PlayerWonder				= 302, //Player's Wonder Card
+		OpponentWonder				= 303, //Opponent'sWonder Card
+		Row				= 400, //All cards in same row as card
+		PlayerRow				= 401, //Initiator chooses any row on the player's side
+		OpponentRow				= 402, //Initiator chooses any row on the opponent's side
+		OpposingRow				= 403, //Opponent's row matching card's row
+		StrongestPlayer				= 500, //Strongest player unit card
+		StrongestOpponent				= 501, //Strongest opponent unit card
+		WeakestPlayer				= 502, //Weakest player unit card
+		WeakestOpponent				= 503, //Weakest opponent unit card
+		PlayerBoosted				= 600, //Player cards that are currently Boosted
+		OpponentBoosted				= 601, //Opponent cards that are currently Boosted
+		AllPlayerBoosted				= 602, //All Player cards that are currently Boosted
+		AllOpponentBoosted				= 603, //All Opponent cards that are currently Boosted
+		PlayerProtected				= 604, //Player cards that are currently Protected
+		OpponentProtected				= 605, //Opponent cards that are currently Protected
+		AllPlayerProtected				= 606, //All Player cards that are currently Protected
+		AllOpponentProtected				= 607, //All Opponent cards that are currently Protected
+		PlayerImmuned				= 608, //Player cards that are currently Immuned
+		OpponentImmuned				= 609, //Opponent cards that are currently Immuned
+		AllPlayerImmuned				= 610, //All Player cards that are currently Immuned
+		AllOpponentImmuned				= 611, //All Opponent cards that are currently Immuned
+		PlayerLocked				= 612, //Player cards that are currently Locked
+		OpponentLocked				= 613, //Opponent cards that are currently Locked
+		AllPlayerLocked				= 614, //All Player cards that are currently Locked
+		AllOpponentLocked				= 615, //All Opponent cards that are currently Locked
+   }
 }

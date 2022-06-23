@@ -1,10 +1,8 @@
 namespace Pixelakes.Wrath.Enums {
-
-    //We need to rfine this list, this would be to target all of a cernt type/class/race of card
-    public enum Rarity {
-        None        = 0,
-        Boring      = 1,
-        Fancy       = 2,
-        SuperFancy  = 3,     
-    }
+	public enum Rarity{
+		None				= 0, //Represents both a standard non NFT card and a super common non rare NFT
+		Boring				= 1, //Slightly rare but still common
+		Fancy				= 2, //A rare find indeed.
+		SuperFancy				= 3, //These are the rarest card in world
+   }
 }

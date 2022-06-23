@@ -18,11 +18,10 @@ namespace Pixelakes.Wrath{
     public class CardData{
         
         [SerializeField, JsonProperty] string name;                // the name for the card
-        [SerializeField, JsonProperty] string quote;                  // if this card has a quote or some lore
+        [SerializeField, JsonProperty] string quote;               // if this card has a quote or some lore
         [SerializeField, JsonProperty, JsonConverter(typeof(StringEnumConverter))] Type     type;
         [SerializeField, JsonProperty, JsonConverter(typeof(StringEnumConverter))] Faction  faction;
         [SerializeField, JsonProperty, JsonConverter(typeof(StringEnumConverter))] SubType  subType;
-        [SerializeField, JsonProperty, JsonConverter(typeof(StringEnumConverter))] Race     race;
         [SerializeField, JsonProperty, JsonConverter(typeof(StringEnumConverter))] Rarity   rarity;
         [SerializeField, JsonProperty] SeriesData series;
 
@@ -40,7 +39,6 @@ namespace Pixelakes.Wrath{
         public Type         Type        => type;
         public Faction      Faction     => faction;
         public SubType      SubType     => subType;
-        public Race         Race        => race;
         public Rarity       Rarity      => rarity;
         public SeriesData   Series      => series;
         public AbilityData[] Abilities  => abilities;
