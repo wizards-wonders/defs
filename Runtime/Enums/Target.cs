@@ -1,9 +1,9 @@
 namespace Pixelakes.Wrath.Enums {
 	public enum Target{
 		None				= 0, //No Target
-		Player				= 100, //Player would not be the card but something on the player, like skip turn or reduce points
-		Opponent				= 101, //Opponent would not be a card but something on the opponent, like skip turn or reduce points
-		AllPlayers				= 103, //1 and 2
+		Player				= 100, //Player level, like skip turn or reduce points
+		Opponent				= 101, //Opponent level, like skip turn or reduce points
+		AllPlayers				= 103, //Both Player and Opponet level
 		RandomPlayer				= 104, //Chooses the player at random
 		PlayerHand				= 105, //Cards in the player's hand
 		OpponentHand				= 106, //Cards in the opponent's hand
