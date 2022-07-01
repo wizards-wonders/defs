@@ -3,7 +3,7 @@ namespace Pixelakes.Wrath.Enums {
 		None				= 0, //No Effect
 		Heal				= 100, //Give Power Points to card
 		Immune				= 101, //Cannot be damaged or targetted
-		Resurrect				= 101, //Move card back to (hand or deck) from graveyard
+		Resurrect				= 102, //Move card back to (hand or deck) from graveyard
 		Damage				= 200, //Take Power Points from a card
 		Destroy				= 201, //Send card to the graveyard
 		Retaliate				= 202, //Damages the attacker by the same amount, if the attacker is not a unit, player may select the target
@@ -14,7 +14,7 @@ namespace Pixelakes.Wrath.Enums {
 		Unlock				= 401, //Removes the lock on a locked card
 		Teleport				= 402, //Moves card to a new row
 		Protection				= 403, //Bubble protection absorbs next damage
-		Silence				= 405, //Removes any status effects
+		Silence				= 404, //Removes any status effects
 		Reveal				= 500, //Shows Card to other player
 		Shuffle				= 501, //Shuffle the deck
 		Draw				= 502, //Draw additional card
