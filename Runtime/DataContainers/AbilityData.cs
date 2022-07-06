@@ -26,7 +26,8 @@ namespace Pixelakes.Wrath{
         [SerializeField, JsonProperty] string   description;
         [SerializeField, JsonProperty] int      actionValue; 
         [SerializeField, JsonProperty] int      offeringValue;
-        [SerializeField, JsonProperty] int      uses;        
+        [SerializeField, JsonProperty] int      uses;
+        [SerializeField, JsonProperty] bool     targetsSelf;     
         [SerializeField, JsonProperty] bool[]   lanes;
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public AbilityType   type;            
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Trigger       trigger;         
@@ -51,6 +52,7 @@ namespace Pixelakes.Wrath{
         public int          ActionValue     => actionValue;     // point value of action
         public int          OfferingValue   => offeringValue;   // point value of offering
         public int          Uses            => uses;            // how many times can be used
+        public bool         TargetsSelf     => targetsSelf;     // when target is not self should the effect also be applied to this card
         public bool[]       Lanes           => lanes;           // which lane the ability works in        
         public bool Lane(int lane)          => (lane<0||lane>=lanes.Length) ? false : lanes[lane];
 
