@@ -1,15 +1,10 @@
 namespace Pixelakes.Wrath.Enums {
-
-    //We need to rfine this list, this would be to target all of a cernt type/class/race of card
-    public enum SubType{
-        None        = 0,
-        Melee       = 1,
-        Ranged      = 2,
-        Support     = 3,
-        Healer      = 4,
-        Sorcerer    = 5,
-        GloCastor   = 6,
-        Fighter     = 7,
-        Barbarian   = 8
-    }
+	public enum SubType{
+		None				= 0, //
+		Light				= 1, //Lightly armored or small close quarter combat units
+		Heavy				= 2, //Heavily armored or large close quarter combat units
+		Range				= 3, //Combat units that fight from a distance
+		Hero				= 4, //Prestigious or Powerful combat units
+		Minion				= 5, //Conjured disposable weak combat units
+   }
 }

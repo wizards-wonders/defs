@@ -8,7 +8,7 @@ namespace Pixelakes.Wrath.Enums {
 		OutOfTurn				= 5, //Any time during the opponent's turn
 		OnDestroy				= 6, //When the card has been destroyed
 		OnDestroyFriendly				= 7, //When any other of the player's cards has been destroyed
-		NextUnit				= 8, //?
+		NextUnit				= 8, //When the opponent plays the first unit after this card was played
 		OnDamaged				= 9, //When the card has been damaged
 		OnHealed				= 10, //When the card has been damaged
 		Draw				= 11, //When a card is drawn from the deck durning a round

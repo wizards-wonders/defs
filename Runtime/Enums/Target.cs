@@ -49,5 +49,9 @@ namespace Pixelakes.Wrath.Enums {
 		OpponentLocked				= 613, //Opponent cards that are currently Locked
 		AllPlayerLocked				= 614, //All Player cards that are currently Locked
 		AllOpponentLocked				= 615, //All Opponent cards that are currently Locked
+		PlayerStealth				= 616, //Player cards that are currently in Stealth
+		OpponentStealth				= 617, //Opponent cards that are currently in Stealth
+		AllPlayerStealth				= 618, //All Player cards that are currently in Stealth
+		AllOpponentStealth				= 619, //All Opponent cards cards that are currently in Stealth
    }
 }
