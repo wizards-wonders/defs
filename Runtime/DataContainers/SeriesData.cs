@@ -16,6 +16,10 @@ namespace Pixelakes.Wrath{
     public class SeriesData {
 
         [SerializeField, JsonProperty] string seriesName;        
-        [SerializeField, JsonProperty] string mint;
+        [SerializeField, JsonProperty] string sourceBundle;
+        
+        public string SeriesName    => seriesName;
+        public string SourceBundle  => $"{seriesName}-{sourceBundle}";
+
     }
 }

@@ -14,7 +14,7 @@ namespace Pixelakes.Wrath{
     using Newtonsoft.Json.Converters;
     using Type = Enums.Type;
     
-    [Serializable]
+    [Serializable, JsonObject(MemberSerialization.OptIn)]
     public class CardData{
         
         [SerializeField, JsonProperty] string name;                // the name for the card
@@ -25,10 +25,12 @@ namespace Pixelakes.Wrath{
         [SerializeField, JsonProperty, JsonConverter(typeof(StringEnumConverter))] Rarity   rarity;
         [SerializeField, JsonProperty] SeriesData series;
 
-        [SerializeField,Range(0,20), JsonProperty] int pointValue;    // base point value
-        [SerializeField, JsonProperty] int health;                    // ??
-        [SerializeField, JsonProperty] int shield;                    // ??
-        [SerializeField, JsonProperty] int summonCost;                // ??        
+        [SerializeField, JsonProperty] string artTexture;
+        [SerializeField, JsonProperty] string frameTexture;
+        [SerializeField, JsonProperty] string backTexture0;
+        [SerializeField, JsonProperty] string backTexture1;
+
+        [SerializeField,Range(0,20), JsonProperty] int pointValue;    // base point value       
         [SerializeField, JsonProperty] int provisions;                // ??        
         [SerializeField, JsonProperty] AbilityData[] abilities;
 
@@ -42,6 +44,8 @@ namespace Pixelakes.Wrath{
         public Rarity       Rarity      => rarity;
         public SeriesData   Series      => series;
         public AbilityData[] Abilities  => abilities;
+
+        
 
     }
 }

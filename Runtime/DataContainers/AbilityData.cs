@@ -16,8 +16,7 @@ namespace Pixelakes.Wrath{
     
 
     [Serializable, JsonObject(MemberSerialization.OptIn)]
-    public class AbilityData {
-        
+    public class AbilityData {        
 
     /**
     *   json data converted
@@ -34,7 +33,9 @@ namespace Pixelakes.Wrath{
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Effect        action;          
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Effect        offering;       
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Target        actionTarget;    
-        [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Target        offeringTarget;  
+        [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Target        offeringTarget;            
+        [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public SubType       actionSubTarget;         
+        [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public SubType       offeringSubTarget; 
         
 
 
