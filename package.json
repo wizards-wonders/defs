@@ -1,6 +1,6 @@
 {
   "name": "com.wizards-wonders.defs",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "displayName": "W&W Defs",
   "description": "Base Data Containers and other reqired Libs",
   "unity": "2019.4",
