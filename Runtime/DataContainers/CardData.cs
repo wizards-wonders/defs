@@ -13,6 +13,7 @@ namespace Pixelakes.Wrath{
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Type = Enums.Type;
+    using JsonConverters;
     
     [Serializable, JsonObject(MemberSerialization.OptIn)]
     public class CardData{
@@ -37,13 +38,13 @@ namespace Pixelakes.Wrath{
         [SerializeField, JsonProperty] public string    faceArtTexture;
         [SerializeField, JsonProperty] public string    faceFrameTexture;
         [SerializeField, JsonProperty] public float[]   faceDepths;
-        [SerializeField, JsonProperty] public Vector3[] faceTiling;
-        [SerializeField, JsonProperty] public Vector2[] faceOffset;
+        [SerializeField, JsonProperty, JsonConverter(typeof(Vector3ArrayConverter))] public Vector3[] faceTiling;
+        [SerializeField, JsonProperty, JsonConverter(typeof(Vector2ArrayConverter))] public Vector2[] faceOffset;
                 
         [SerializeField, JsonProperty] public string[]  backLayers;
         [SerializeField, JsonProperty] public float[]   backDepths;
-        [SerializeField, JsonProperty] public Vector3[] backTiling;
-        [SerializeField, JsonProperty] public Vector2[] backOffset;
+        [SerializeField, JsonProperty, JsonConverter(typeof(Vector3ArrayConverter))] public Vector3[] backTiling;
+        [SerializeField, JsonProperty, JsonConverter(typeof(Vector2ArrayConverter))] public Vector2[] backOffset;
 
 
         public string       Name        => name;

@@ -1,8 +1,8 @@
 {
   "name": "com.wizards-wonders.defs",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "displayName": "W&W Defs",
-  "description": "Base Data Containers and other reqired Libs",
+  "description": "Base Data Containers, Enums and other reqired Libs for W&W",
   "unity": "2019.4",
   "unityRelease": "2f1",
   "documentationUrl": "TBD",
