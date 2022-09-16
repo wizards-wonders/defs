@@ -26,11 +26,6 @@ namespace Pixelakes.Wrath{
         [SerializeField, JsonProperty, JsonConverter(typeof(StringEnumConverter))] Rarity   rarity;
         [SerializeField, JsonProperty] SeriesData series;
 
-        [SerializeField, JsonProperty] string artTexture;
-        [SerializeField, JsonProperty] string frameTexture;
-        [SerializeField, JsonProperty] string backTexture0;
-        [SerializeField, JsonProperty] string backTexture1;
-
         [SerializeField,Range(0,20), JsonProperty] int pointValue;    // base point value       
         [SerializeField, JsonProperty] int provisions;                // ??        
         [SerializeField, JsonProperty] AbilityData[] abilities;
