@@ -13,6 +13,7 @@ namespace Pixelakes.Wrath{
     using UnityEngine;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
+    using System.Text.RegularExpressions;
     
 
     [Serializable, JsonObject(MemberSerialization.OptIn)]
@@ -58,25 +59,28 @@ namespace Pixelakes.Wrath{
         public bool Lane(int lane)          => (lane<0||lane>=lanes.Length) ? false : lanes[lane];
 
         
-        public string TriggerString          { get => $"{Helpers.EnumToString<Trigger>(trigger)}";}
-        public string ActionString           { get => $"{Helpers.EnumToString<Effect>(action)}";}
-        public string OfferingString         { get => $"{Helpers.EnumToString<Effect>(offering)}";}
-        public string ActionTargetString     { get => $"{Helpers.EnumToString<Target>(actionTarget)}";}
-        public string OfferingTargetString   { get => $"{Helpers.EnumToString<Target>(offeringTarget)}";}
+        public string TriggerString          { get => $"{Regex.Replace(Helpers.EnumToString<Trigger>(trigger), "([A-Z])([a-z]*)", " $1$2") }";}
+        public string ActionString           { get => $"{Regex.Replace(Helpers.EnumToString<Effect>(action), "([A-Z])([a-z]*)", " $1$2")}";}
+        public string OfferingString         { get => $"{Regex.Replace(Helpers.EnumToString<Effect>(offering), "([A-Z])([a-z]*)", " $1$2")}";}
+        public string ActionTargetString     { get => $"{Regex.Replace(Helpers.EnumToString<Target>(actionTarget), "([A-Z])([a-z]*)", " $1$2")}";}
+        public string OfferingTargetString   { get => $"{Regex.Replace(Helpers.EnumToString<Target>(offeringTarget), "([A-Z])([a-z]*)", " $1$2")}";}
+
 
 
         /// <summary>
         /// Returns a formated string we can use in UI Text
         /// </summary>
         /// <returns></returns>
-        public string RichStringify(){
+         public string RichStringify(){
             string actionColor = "#FFAD09";
             string offeringColor ="#6A0909";
-            string rs = $"{Name}\n <b><color='{actionColor}'>{TriggerString}</color></b> - {ActionString} {ActionValue} TO {ActionTargetString}";
+            string rs = "";
+            if(Name.Length>1) rs=$"{Name}\n";
+            rs+=$"<b><color={actionColor}>{TriggerString}</color></b> - {ActionString} {ActionValue} {ActionTargetString}";
             if(offering != Enums.Effect.None) {
-                rs += $"\n <b><color='{offeringColor}'>Scerifice</color></b> {OfferingString} {OfferingValue} TO {OfferingTargetString}";
+                rs += $"\n<b><color={offeringColor}>Scerifice</color></b> {OfferingString} {OfferingValue} {OfferingTargetString}";
             }
-            return rs;
+            return rs.Replace("None", "");
         }
     
 
