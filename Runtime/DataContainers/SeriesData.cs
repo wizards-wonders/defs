@@ -19,7 +19,7 @@ namespace Pixelakes.Wrath{
         [SerializeField, JsonProperty] string sourceBundle;
         
         public string SeriesName    => seriesName;
-        public string SourceBundle  => $"{seriesName}-{sourceBundle}";
+        public string SourceBundle  => $"{seriesName.Replace(" ", "-").ToLower()}-{sourceBundle}";
 
     }
 }
