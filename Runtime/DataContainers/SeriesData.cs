@@ -15,8 +15,8 @@ namespace Pixelakes.Wrath{
     [Serializable, JsonObject(MemberSerialization.OptIn)]
     public class SeriesData {
 
-        [SerializeField, JsonProperty] string seriesName;        
-        [SerializeField, JsonProperty] string sourceBundle;
+        [SerializeField, JsonProperty] protected string seriesName;        
+        [SerializeField, JsonProperty] protected string sourceBundle;
         
         public string SeriesName    => seriesName;
         public string SourceBundle  => $"{seriesName.Replace(" ", "-").ToLower()}-{sourceBundle}";

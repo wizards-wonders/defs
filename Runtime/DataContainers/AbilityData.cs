@@ -22,13 +22,13 @@ namespace Pixelakes.Wrath{
     /**
     *   json data converted
     */
-        [SerializeField, JsonProperty] string   name;
-        [SerializeField, JsonProperty] string   description;
-        [SerializeField, JsonProperty] int      actionValue; 
-        [SerializeField, JsonProperty] int      offeringValue;
-        [SerializeField, JsonProperty] int      uses;
-        [SerializeField, JsonProperty] bool     targetsSelf;     
-        [SerializeField, JsonProperty] bool[]   lanes;
+        [SerializeField, JsonProperty] protected string   name;
+        [SerializeField, JsonProperty] protected string   description;
+        [SerializeField, JsonProperty] protected int      actionValue; 
+        [SerializeField, JsonProperty] protected int      offeringValue;
+        [SerializeField, JsonProperty] protected int      uses;
+        [SerializeField, JsonProperty] protected bool     targetsSelf;     
+        [SerializeField, JsonProperty] protected bool[]   lanes;
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public AbilityType   type;            
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Trigger       trigger;         
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Effect        action;          
