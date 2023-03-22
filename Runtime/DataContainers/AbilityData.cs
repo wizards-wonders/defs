@@ -19,6 +19,7 @@ namespace Pixelakes.Wrath{
     [Serializable, JsonObject(MemberSerialization.OptIn)]
     public class AbilityData {        
 
+    
     /**
     *   json data converted
     */
@@ -37,9 +38,13 @@ namespace Pixelakes.Wrath{
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Effect        action;                 // The action (Effect) ran
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Effect        offering;               // The offering (Effect) ran, Sacerfice, Cost for use
         
-        [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Target        actionTarget;           // Target card(s) for the action (Effect) to be applied to
-        [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Target        offeringTarget;         // Target card(s) for the offering (Effect)  to be applied to
-        [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Target        triggerTarget;         // Target card(s) for the Trigger (Effect)  to be applied to
+        [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public OldTarget        actionTarget;           // Target card(s) for the action (Effect) to be applied to
+        [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public OldTarget        offeringTarget;         // Target card(s) for the offering (Effect)  to be applied to
+        [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public OldTarget        triggerTarget;         // Target card(s) for the Trigger (Effect)  to be applied to
+
+        [JsonProperty(ItemConverterType = typeof(StringEnumConverter))] public Target[]      _actionTarget;  
+        [JsonProperty(ItemConverterType = typeof(StringEnumConverter))] public Target[]      _offeringTarget;
+        [JsonProperty(ItemConverterType = typeof(StringEnumConverter))] public Target[]      _triggerTarget; 
         
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Effect        actionEffectTarget;     // Target card(s) with Effect for the action (Effect) to be applied to
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Effect        offeringEffectTarget;   // Target card(s) with Effect for the offering (Effect)  to be applied to 
@@ -68,9 +73,9 @@ namespace Pixelakes.Wrath{
         public Effect       Action                  => action;                  // type of action
         public Effect       Offering                => offering;                // type of offering - i.e cost paid or sacrifice made
         
-        public Target       ActionTarget            => actionTarget;            // who the action affects
-        public Target       OfferingTarget          => offeringTarget;          // who the offering affects
-        public Target       TriggerTarget           => triggerTarget;           // who/what triggers the effects
+        public OldTarget       ActionTarget            => actionTarget;            // who the action affects
+        public OldTarget       OfferingTarget          => offeringTarget;          // who the offering affects
+        public OldTarget       TriggerTarget           => triggerTarget;           // who/what triggers the effects
         
         public Effect       ActionEffectTarget      => actionEffectTarget;      // Effect on Cards that should be Targeted for the action (Effect) to be applied to
         public Effect       OfferingEffectTarget    => offeringEffectTarget;    // Effect on Cards that should be Targeted for the offering (Effect)  to be applied to         
@@ -94,11 +99,14 @@ namespace Pixelakes.Wrath{
         public bool Lane(int lane)                  => (lane<0||lane>=lanes.Length) ? false : lanes[lane];
 
         
-        public string TriggerString          { get => $"{Regex.Replace(Helpers.EnumToString<Trigger>(trigger), "([A-Z])([a-z]*)", " $1$2") }";}
-        public string ActionString           { get => $"{Regex.Replace(Helpers.EnumToString<Effect>(action), "([A-Z])([a-z]*)", " $1$2")}";}
-        public string OfferingString         { get => $"{Regex.Replace(Helpers.EnumToString<Effect>(offering), "([A-Z])([a-z]*)", " $1$2")}";}
-        public string ActionTargetString     { get => $"{Regex.Replace(Helpers.EnumToString<Target>(actionTarget), "([A-Z])([a-z]*)", " $1$2")}";}
-        public string OfferingTargetString   { get => $"{Regex.Replace(Helpers.EnumToString<Target>(offeringTarget), "([A-Z])([a-z]*)", " $1$2")}";}
+        public string TriggerString          { get => EnumStringToHuman(Helpers.EnumToString<Trigger>(trigger));}
+        public string ActionString           { get => EnumStringToHuman(Helpers.EnumToString<Effect>(action));}
+        public string OfferingString         { get => EnumStringToHuman(Helpers.EnumToString<Effect>(offering));}
+        public string ActionTargetString     { get => EnumStringToHuman(Helpers.EnumToString<OldTarget>(actionTarget));}        
+        public string OfferingTargetString   { get => EnumStringToHuman(Helpers.EnumToString<OldTarget>(offeringTarget));}
+// ** Array convert
+        // public string ActionTargetString     { get => EnumArrayToString<Target>(actionTarget);}  
+        // public string OfferingTargetString   { get => EnumArrayToString<Target>(offeringTarget);}
 
 
 
@@ -117,7 +125,15 @@ namespace Pixelakes.Wrath{
             }
             return rs.Replace("None", "");
         }
-    
+
+        string EnumArrayToString<E>(E[] enums) {
+            string[] enumstrings = new string[enums.Length];
+            for(int i=0; i< enums.Length; i++){
+                enumstrings[i] = EnumStringToHuman(Helpers.EnumToString<E>(enums[i]));
+            }
+            return String.Join(", ", enumstrings);
+        }
+        string EnumStringToHuman(string str) => $"{Regex.Replace(str, "([A-Z])([a-z]*)", " $1$2")}";
 
     }
 }
