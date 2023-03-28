@@ -4,7 +4,7 @@ namespace Pixelakes.Wrath.Enums {
 		Heal				= 100, //Give Power Points to card
 		Immune				= 101, //Cannot be damaged or targetted
 		Resurrect			= 102, //Move card back to (hand or deck) from graveyard
-		Reincarnation 		= 103, //Come back to life on death with init state
+		Reincarnation		= 103, //Come back to life on death with init state
 		Damage				= 200, //Take Power Points from a card
 		Destroy				= 201, //Send card to the graveyard
 		Retaliate			= 202, //Damages the attacker by the same amount, if the attacker is not a unit, player may select the target
