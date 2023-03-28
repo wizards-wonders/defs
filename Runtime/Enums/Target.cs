@@ -9,7 +9,7 @@ namespace Pixelakes.Wrath.Enums {
 		OpposingRow				= 105, //Opponent's row matching card's row
 		Strongest				= 200, //Strongest Card
 		Weakest				= 201, //Weakest Card
-		Effect				= 203, //Targets Cards With (x)Effect Applied
+		Effect				= 202, //Targets Cards With (x)Effect Applied
 		SubType				= 203, //Targets a Subtype
 		All				= 204, //All card(s) in target
 		Random				= 205, //Random card in Target
