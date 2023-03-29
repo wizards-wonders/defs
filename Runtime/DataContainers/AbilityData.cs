@@ -41,6 +41,10 @@ namespace Pixelakes.Wrath{
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public OldTarget        actionTarget;           // Target card(s) for the action (Effect) to be applied to
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public OldTarget        offeringTarget;         // Target card(s) for the offering (Effect)  to be applied to
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public OldTarget        triggerTarget;         // Target card(s) for the Trigger (Effect)  to be applied to
+        
+        [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public OldTarget        old_actionTarget;           // Target card(s) for the action (Effect) to be applied to
+        [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public OldTarget        old_offeringTarget;         // Target card(s) for the offering (Effect)  to be applied to
+        [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public OldTarget        old_triggerTarget;         // Target card(s) for the Trigger (Effect)  to be applied to
 
         [JsonProperty(ItemConverterType = typeof(StringEnumConverter))] public Target[]      _actionTarget;  
         [JsonProperty(ItemConverterType = typeof(StringEnumConverter))] public Target[]      _offeringTarget;
