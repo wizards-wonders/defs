@@ -1,13 +1,7 @@
-/// <summary>
-/// Project: wizards & wonders
-/// Company: Pixelakes
-/// Script:  Helpers.cs
-/// Created: 6/9/2022 11:11:00 AM
-/// Author:  AaronBuffie
-/// </summary>
-/// 
-namespace Pixelakes.Wrath.Enums{
 
+namespace Pixelakes.Wrath{
+    
+    using Enums;
     using System.Collections.Generic;
 
     /// <summary>
@@ -18,6 +12,7 @@ namespace Pixelakes.Wrath.Enums{
         public static string EnumToString<T>(int e) => System.Enum.GetName(typeof(T), e);
         public static T StringToEnum<T>(string s)   => (T)System.Enum.Parse(typeof(T), s, true);
     }
+
 
     /// <summary>
     /// Entity Compatible Targets :: Returns a list of valid target names for the entity
@@ -89,6 +84,17 @@ namespace Pixelakes.Wrath.Enums{
             Helpers.EnumToString<Target>(Target.Weakest),		
             Helpers.EnumToString<Target>(Target.SubType),		
             Helpers.EnumToString<Target>(Target.Effect),		
+            Helpers.EnumToString<Target>(Target.All),			
+            Helpers.EnumToString<Target>(Target.Random),		
+            Helpers.EnumToString<Target>(Target.Card),			
+        };
+        /// <summary>
+        /// SubType Compatible Targets :: Returns a list of valid target names for a card SubType
+        /// </summary>
+        /// <value></value>
+        public static List<string> Effect => new List<string>{
+            Helpers.EnumToString<Target>(Target.Strongest),	
+            Helpers.EnumToString<Target>(Target.Weakest),		
             Helpers.EnumToString<Target>(Target.All),			
             Helpers.EnumToString<Target>(Target.Random),		
             Helpers.EnumToString<Target>(Target.Card),			
@@ -176,8 +182,13 @@ namespace Pixelakes.Wrath.Enums{
                     targets = EntityTargets.All;
                 break;
             }
-            if(isTrigger && !targets.Contains(Helpers.EnumToString<Target>(Target.Effect))){
-                targets.Add(Helpers.EnumToString<Target>(Target.Effect));
+            if(isTrigger){
+                if(!targets.Contains(Helpers.EnumToString<Target>(Target.None))){
+                    targets.Insert(0,Helpers.EnumToString<Target>(Target.None));
+                }
+                if(!targets.Contains(Helpers.EnumToString<Target>(Target.Effect))){
+                    targets.Add(Helpers.EnumToString<Target>(Target.Effect));
+                }
             }
             return targets;
         }
@@ -198,6 +209,7 @@ namespace Pixelakes.Wrath.Enums{
             switch (target){
                 case (int)Target.Battlefield : targets = TargetTargets.Battlefield; break;
                 case (int)Target.Row         : targets = TargetTargets.Row; break;
+                case (int)Target.Effect      : targets = TargetTargets.Effect; break;
                 case (int)Target.SubType     : targets = TargetTargets.Row; break;
                 case (int)Target.Hand        : targets = TargetTargets.Hand; break;
                 case (int)Target.Deck        : targets = TargetTargets.Deck; break;
