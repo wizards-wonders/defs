@@ -7,7 +7,6 @@ namespace Pixelakes.Wrath.Enums {
 		EndOfTurn				= 4, //At the end of the player's turn after all actions have been completed
 		OutOfTurn				= 5, //Any time during the opponent's turn
 		NextUnit				= 8, //When the opponent plays the first unit after this card was played
-		Draw				= 11, //When a card is drawn from the deck durning a round
-		Effect				= 12, //If the Trigger is on Effect, then use the TriggerEffect set
+		Effect				= 9, //If the Trigger is on Effect, then use the TriggerEffect set
    }
 }
