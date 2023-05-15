@@ -1,4 +1,3 @@
-
 namespace Pixelakes.Wrath{
     
     using Enums;
@@ -16,11 +15,48 @@ namespace Pixelakes.Wrath{
 
     abstract public class EnumFilter<T> where T:struct{
 
-        public static T[] EnumList =>  ( ((T[])System.Enum.GetValues(typeof(T))).ToList<T>().Where(e => (int)(object)e !=0)).ToArray<T>() ;
+        public static T[] EnumList =>  ( ((T[])System.Enum.GetValues(typeof(T))).ToList<T>().Where(e => (int)(object)e !=0)).ToArray<T>();
+
+        /// <summary>
+        /// Filters out unwanted values from an enum and returns an IEnumerable set of type string
+        /// </summary>
+        /// <param name="invalid"></param>
+        /// <returns></returns>
         public static IEnumerable<string> Filtered(List<T> invalid = default(List<T>)){
             foreach (T e in EnumList){
                 if(invalid!=null && invalid.Contains(e)){continue;}
                 yield return Helpers.EnumToString<T>(e);
+            }
+        }
+        /// <summary>
+        /// Filters out unwanted values from an enum and returns an IEnumerable set  
+        /// </summary>
+        /// <param name="invalid"></param>
+        /// <returns></returns>
+        public static IEnumerable<T> FilteredEnum(List<T> invalid = default(List<T>)){
+            foreach (T e in EnumList){
+                if(invalid!=null && invalid.Contains(e)){continue;}
+                yield return e;
+            }
+        }
+
+        /// <summary>
+        /// Filters wanted values from an enum and returns an IEnumerable set of type string
+        /// </summary>
+        /// <param name="invalid"></param>
+        /// <returns></returns>
+        public static IEnumerable<string> Only(List<T> only = default(List<T>)){ // NOTE: IS this more overhead then using its own foreach like the rest?
+            var o = OnlyEnum(only).GetEnumerator();
+            while(o.MoveNext()){yield return Helpers.EnumToString<T>(o.Current);}
+        }
+        /// <summary>
+        /// Filters wanted values from an enum and returns an IEnumerable set  
+        /// </summary>
+        /// <param name="invalid"></param>
+        /// <returns></returns>
+        public static IEnumerable<T> OnlyEnum(List<T> only = default(List<T>)){
+            foreach (T e in EnumList){
+                if(only==null && only.Contains(e)){yield return e;}
             }
         }
     }
@@ -34,7 +70,7 @@ namespace Pixelakes.Wrath{
         /// Valid Targets for a Player 
         /// </summary>
         /// <value></value>
-        public static IEnumerable<string> Players =>  Filtered(new List<Target>(){
+        /*public static IEnumerable<string> Players =>  Filtered(new List<Target>(){
             Target.CardOnLeft,	
             Target.CardOnRight,	
             Target.Neighbors,	
@@ -50,14 +86,14 @@ namespace Pixelakes.Wrath{
             Target.All,			
             Target.Random,		
             Target.Card,			
+        });*/
+        public static IEnumerable<string> Players => Only(new List<Target>{
+            Target.Battlefield,
+            Target.Hand,
+            Target.Deck,
+            Target.Commander,
+            Target.Wonder,
         });
-        /*public static List<string> Players => new List<string>{
-            Helpers.EnumToString<Target>(Target.Battlefield),
-            Helpers.EnumToString<Target>(Target.Hand),
-            Helpers.EnumToString<Target>(Target.Deck),
-            Helpers.EnumToString<Target>(Target.Commander),
-            Helpers.EnumToString<Target>(Target.Wonder),
-        };*/
         /// <summary>
         /// Valid Targets Both Players
         /// </summary>  
@@ -72,7 +108,7 @@ namespace Pixelakes.Wrath{
         // Valid Targets for Card being played 
         /// </summary>
         /// <value></value>
-        public static IEnumerable<string> Card =>  Filtered(new List<Target>(){
+ /*       public static IEnumerable<string> Card =>  Filtered(new List<Target>(){
             Target.Battlefield,	
             Target.Lane1,		
             Target.Lane2,		
@@ -88,15 +124,14 @@ namespace Pixelakes.Wrath{
             Target.Deck,		
             Target.Commander,	
             Target.Wonder,		
-        });/*
-        public static List<string> Card => new List<string>{
-            Helpers.EnumToString<Target>(Target.None),
-            Helpers.EnumToString<Target>(Target.CardOnLeft),
-            Helpers.EnumToString<Target>(Target.CardOnRight),
-            Helpers.EnumToString<Target>(Target.Neighbors),
-            Helpers.EnumToString<Target>(Target.Row),
-            Helpers.EnumToString<Target>(Target.OpposingRow)
-        };*/
+        });*/
+        public static IEnumerable<string> Card => Only(new List<Target>{
+            Target.CardOnLeft,
+            Target.CardOnRight,
+            Target.Neighbors,
+            Target.Row,
+            Target.OpposingRow
+        });
 
         
     }
@@ -139,7 +174,7 @@ namespace Pixelakes.Wrath{
         /// Row Compatible Targets :: Returns a list of valid target names for Rows in the battlefield
         /// </summary>
         /// <value></value>
-        public static IEnumerable<string> Row => Filtered(new List<Target>(){
+        /*public static IEnumerable<string> Row => Filtered(new List<Target>(){
             Target.Battlefield,
             Target.CardOnLeft,	
             Target.CardOnRight,	
@@ -153,22 +188,22 @@ namespace Pixelakes.Wrath{
             Target.Deck,		
             Target.Commander,	
             Target.Wonder
-        }); 
-        /*public static List<string> Row => new List<string>{
-            Helpers.EnumToString<Target>(Target.Strongest),	
-            Helpers.EnumToString<Target>(Target.Weakest),		
-            Helpers.EnumToString<Target>(Target.SubType),		
-            Helpers.EnumToString<Target>(Target.Effect),		
-            Helpers.EnumToString<Target>(Target.All),			
-            Helpers.EnumToString<Target>(Target.Random),		
-            Helpers.EnumToString<Target>(Target.Card),			
-        };
-        */
+        });*/ 
+        public static IEnumerable<string> Row => Only(new List<Target>{
+            Target.Strongest,	
+            Target.Weakest,		
+            Target.SubType,		
+            Target.Effect,		
+            Target.All,			
+            Target.Random,		
+            Target.Card,			
+        });
+        
         /// <summary>
         /// SubType Compatible Targets :: Returns a list of valid target names for a card SubType
         /// </summary>
         /// <value></value>
-        public static IEnumerable<string> Effect => Filtered(new List<Target>(){
+        /*public static IEnumerable<string> Effect => Filtered(new List<Target>{
             Target.Battlefield,	
             Target.CardOnLeft,	
             Target.CardOnRight,	
@@ -184,19 +219,19 @@ namespace Pixelakes.Wrath{
             Target.Deck,		
             Target.Commander,	
             Target.Wonder,		
-        });/*
-        public static List<string> Effect => new List<string>{
-            Helpers.EnumToString<Target>(Target.Strongest),	
-            Helpers.EnumToString<Target>(Target.Weakest),		
-            Helpers.EnumToString<Target>(Target.All),			
-            Helpers.EnumToString<Target>(Target.Random),		
-            Helpers.EnumToString<Target>(Target.Card),			
-        };*/
+        });*/
+        public static IEnumerable<string> Effect => Only(new List<Target>{
+            Target.Strongest,	
+            Target.Weakest,		
+            Target.All,			
+            Target.Random,		
+            Target.Card,			
+        });
         /// <summary>
         /// SubType Compatible Targets :: Returns a list of valid target names for a card SubType
         /// </summary>
         /// <value></value>
-        public static IEnumerable<string> SubType => Filtered(new List<Target>(){
+        /*public static IEnumerable<string> SubType => Filtered(new List<Target>(){
             Target.Battlefield,	
             Target.CardOnLeft,	
             Target.CardOnRight,	
@@ -211,15 +246,15 @@ namespace Pixelakes.Wrath{
             Target.Deck,		
             Target.Commander,	
             Target.Wonder,		
+        });*/
+        public static IEnumerable<string> SubType => Only(new List<Target>{
+            Target.Strongest,	
+            Target.Weakest,		
+            Target.Effect,		
+            Target.All,			
+            Target.Random,		
+            Target.Card,			
         });
-        /*public static List<string> SubType => new List<string>{
-            Helpers.EnumToString<Target>(Target.Strongest),	
-            Helpers.EnumToString<Target>(Target.Weakest),		
-            Helpers.EnumToString<Target>(Target.Effect),		
-            Helpers.EnumToString<Target>(Target.All),			
-            Helpers.EnumToString<Target>(Target.Random),		
-            Helpers.EnumToString<Target>(Target.Card),			
-        };*/
 
         /// <summary>
         /// SubType Compatible Targets :: Returns a list of valid target names for Card(s) in Hand
@@ -229,7 +264,7 @@ namespace Pixelakes.Wrath{
         /// SubType Compatible Targets :: Returns a list of valid target names for Card(s) in Deck
         /// </summary>
         /// <value></value>
-        public static IEnumerable<string> Deck => Filtered(new List<Target>(){
+        /*public static IEnumerable<string> Deck => Filtered(new List<Target>(){
             Target.Battlefield,	
             Target.CardOnLeft,	
             Target.CardOnRight,	
@@ -244,16 +279,16 @@ namespace Pixelakes.Wrath{
             Target.Deck,		
             Target.Commander,	
             Target.Wonder,		
+        });*/
+        
+        public static IEnumerable<string> Deck => Only(new List<Target>{
+           Target.Strongest,	
+           Target.Weakest,		
+           Target.SubType,			
+           Target.All,			
+           Target.Random,		
+           Target.Card,			
         });
-        /*
-        public static List<string> Deck => new List<string>{
-            Helpers.EnumToString<Target>(Target.Strongest),	
-            Helpers.EnumToString<Target>(Target.Weakest),		
-            Helpers.EnumToString<Target>(Target.SubType),			
-            Helpers.EnumToString<Target>(Target.All),			
-            Helpers.EnumToString<Target>(Target.Random),		
-            Helpers.EnumToString<Target>(Target.Card),			
-        };*/
     }
     
     /// <summary>
@@ -291,7 +326,7 @@ namespace Pixelakes.Wrath{
 		    Helpers.EnumToString<Effect>(Effect.Displace),
         };
 */
-        public static IEnumerable<string> IsParent => Filtered(new List<Effect> {
+        /*public static IEnumerable<string> IsParent => Filtered(new List<Effect> {
             Effect.Heal,			
             Effect.Immune,			
             Effect.Resurrect,		
@@ -313,22 +348,20 @@ namespace Pixelakes.Wrath{
             Effect.Consume,			
             Effect.Absorb,			
             Effect.Displace,	
+        });*/
+        public static IEnumerable<string> IsParent => Only(new List<Effect>{
+            Effect.Reveal,   
+            Effect.Shuffle,  
+            Effect.Draw,     
+            Effect.Plant,    
         });
-       /* public static List<string> IsParent => new List<string>{
-            Helpers.EnumToString<Effect>(Effect.Reveal),   
-            Helpers.EnumToString<Effect>(Effect.Shuffle),  
-            Helpers.EnumToString<Effect>(Effect.Draw),     
-            Helpers.EnumToString<Effect>(Effect.Plant),    
-        };
-        */
+        
     }
 
     public class Effects : EnumFilter<Effect>{
-      
         public static IEnumerable<string> TypeActivated => Filtered(new List<Effect>(){Effect.Retaliate});       
         public static IEnumerable<string> TypeTrigger   => Filtered();
         public static IEnumerable<string> Offering      => Filtered(new List<Effect>(){Effect.Shuffle, Effect.Draw, Effect.Reveal, Effect.Resurrect, Effect.Plant});
-		
     }
     
     public class WrathEnum{
