@@ -56,7 +56,7 @@ namespace Pixelakes.Wrath{
         /// <returns></returns>
         public static IEnumerable<T> OnlyEnum(List<T> only = default(List<T>)){
             foreach (T e in EnumList){
-                if(only==null && only.Contains(e)){yield return e;}
+                if(only!=null && only.Contains(e)){yield return e;}
             }
         }
     }
@@ -361,7 +361,7 @@ namespace Pixelakes.Wrath{
     public class Effects : EnumFilter<Effect>{
         public static IEnumerable<string> TypeActivated => Filtered(new List<Effect>(){Effect.Retaliate});       
         public static IEnumerable<string> TypeTrigger   => Filtered();
-        public static IEnumerable<string> Offering      => Filtered(new List<Effect>(){Effect.Shuffle, Effect.Draw, Effect.Reveal, Effect.Resurrect, Effect.Plant});
+        public static IEnumerable<string> Offering      => Filtered(new List<Effect>(){Effect.None, Effect.Shuffle, Effect.Draw, Effect.Reveal, Effect.Resurrect, Effect.Plant});
     }
     
     public class WrathEnum{
