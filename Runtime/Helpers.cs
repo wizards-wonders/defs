@@ -126,6 +126,7 @@ namespace Pixelakes.Wrath{
             Target.Wonder,		
         });*/
         public static IEnumerable<string> Card => Only(new List<Target>{
+            Target.None,
             Target.CardOnLeft,
             Target.CardOnRight,
             Target.Neighbors,
