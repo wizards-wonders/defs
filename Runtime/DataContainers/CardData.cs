@@ -37,7 +37,8 @@ namespace Pixelakes.Wrath{
         [SerializeField, JsonProperty] public float[]   faceDepths;
         [SerializeField, JsonProperty, JsonConverter(typeof(Vector3ArrayConverter))] public Vector3[] faceTiling;
         [SerializeField, JsonProperty, JsonConverter(typeof(Vector2ArrayConverter))] public Vector2[] faceOffset;
-                
+        
+        [SerializeField, JsonProperty] public string    backShader;
         [SerializeField, JsonProperty] public string[]  backLayers;
         [SerializeField, JsonProperty] public float[]   backDepths;
         [SerializeField, JsonProperty, JsonConverter(typeof(Vector3ArrayConverter))] public Vector3[] backTiling;
@@ -62,6 +63,7 @@ namespace Pixelakes.Wrath{
         public Vector3[] FaceTiling         => faceTiling;
         public Vector2[] FaceOffset         => faceOffset;
         
+        public string    BackShader         => backShader;
         public string[]  BackLayers         => backLayers;
         public float[]   BackDepths         => backDepths;
         public Vector3[] BackTiling         => backTiling;
