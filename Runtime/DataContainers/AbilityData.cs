@@ -118,7 +118,7 @@ namespace Pixelakes.Wrath{
         /// Returns a formated string we can use in UI Text
         /// </summary>
         /// <returns></returns>
-         public string RichStringify(){
+        public virtual string RichStringify(){
             string actionColor = "#FFAD09";
             string offeringColor ="#6A0909";
             string rs = "";
