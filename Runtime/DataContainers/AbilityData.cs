@@ -42,14 +42,6 @@ namespace Pixelakes.Wrath{
         [JsonProperty(ItemConverterType = typeof(StringEnumConverter))] public Target[]        offeringTarget;         // Target card(s) for the offering (Effect)  to be applied to
         [JsonProperty(ItemConverterType = typeof(StringEnumConverter))] public Target[]        triggerTarget;         // Target card(s) for the Trigger (Effect)  to be applied to
         
-       // [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public OldTarget        old_actionTarget;           // Target card(s) for the action (Effect) to be applied to
-       // [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public OldTarget        old_offeringTarget;         // Target card(s) for the offering (Effect)  to be applied to
-      //  [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public OldTarget        old_triggerTarget;         // Target card(s) for the Trigger (Effect)  to be applied to
-
-        [JsonProperty(ItemConverterType = typeof(StringEnumConverter))] public Target[]      _actionTarget;  
-        [JsonProperty(ItemConverterType = typeof(StringEnumConverter))] public Target[]      _offeringTarget;
-        [JsonProperty(ItemConverterType = typeof(StringEnumConverter))] public Target[]      _triggerTarget; 
-        
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Effect        actionEffectTarget;     // Target card(s) with Effect for the action (Effect) to be applied to
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Effect        offeringEffectTarget;   // Target card(s) with Effect for the offering (Effect)  to be applied to 
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Effect        triggerEffectTarget;   // Target card(s) with Effect for the Trigger (Effect)  to be applied to         
@@ -124,7 +116,9 @@ namespace Pixelakes.Wrath{
             string offeringColor ="#6A0909";
             string rs = "";
             if(Name.Length>1) rs=$"{Name}\n";
-            rs+=$"<b><color={actionColor}>{TriggerString}</color></b> - {ActionString} {ActionValue} {ActionTargetString}";
+
+            string actionValueString = ActionValue==0?"" : ActionValue>0 ? $"+{ActionValue}" : $"-{ActionValue}";
+            rs+=$"<b><color={actionColor}>{TriggerString}</color></b> - {ActionString} {actionValueString} To {ActionTargetString}";
             if(offering != Enums.Effect.None) {
                 rs += $"\n<b><color={offeringColor}>Scerifice</color></b> {OfferingString} {OfferingValue} {OfferingTargetString}";
             }
@@ -134,11 +128,16 @@ namespace Pixelakes.Wrath{
         string EnumArrayToString<E>(E[] enums) {
             string[] enumstrings = new string[enums.Length];
             for(int i=0; i< enums.Length; i++){
-                enumstrings[i] = EnumStringToHuman(Helpers.EnumToString<E>(enums[i]));
+                string t = EnumStringToHuman(Helpers.EnumToString<E>(enums[i]));
+                if(t=="All"){ t= $"{t} Cards";}
+                if(t=="Row"){ t= $"In Lane";}
+                if(t=="Battlefield"){ t= $"On {t}";}
+                enumstrings[i] = t;
             }
-            return String.Join(", ", enumstrings);
+            Array.Reverse(enumstrings);
+            return String.Join(" ", enumstrings);
         }
-        string EnumStringToHuman(string str) => $"{Regex.Replace(str, "([A-Z])([a-z]*)", " $1$2")}";
+        string EnumStringToHuman(string str) => $"{Regex.Replace(str, "([A-Z])([a-z]*)", "$1$2")}";
 
     }
 }
