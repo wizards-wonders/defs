@@ -112,26 +112,40 @@ namespace Pixelakes.Wrath{
         /// </summary>
         /// <returns></returns>
         public virtual string RichStringify(){
-            string actionColor = "#FFAD09";
-            string offeringColor ="#6A0909";
+            string triggerColor   = "#FFAD09";
+            string offeringColor ="#FF6600";
+            string badColor      = "#FC003F";
+            string goodColor     = "#03FFC0";            
+            string modColor     = "#6846BD";
+
             string rs = "";
             if(Name.Length>1) rs=$"{Name}\n";
 
-            string actionValueString = ActionValue==0?"" : ActionValue>0 ? $"+{ActionValue}" : $"-{ActionValue}";
-            rs+=$"<b><color={actionColor}>{TriggerString}</color></b> - {ActionString} {actionValueString} To {ActionTargetString}";
+            string actionValueString = ActionValue==0 ? ActionString : $"{ActionString} {(ActionValue>0 ? $"+{ActionValue}" : $"-{ActionValue}" )}";
+            
+            string actionColor = ActionValue==0 ? modColor: (ActionValue<0 ? badColor : goodColor);
+            rs+= $"<b><color={triggerColor}>{TriggerString}</color></b><color={actionColor}> - {actionValueString}</color>\n";
+            rs+= EnumArrayToString<Target>(actionTarget, TargetCount);
+
             if(offering != Enums.Effect.None) {
                 rs += $"\n<b><color={offeringColor}>Scerifice</color></b> {OfferingString} {OfferingValue} {OfferingTargetString}";
             }
             return rs.Replace("None", "");
         }
 
-        string EnumArrayToString<E>(E[] enums) {
+        string EnumArrayToString<E>(E[] enums, int cardCount=0) {
             string[] enumstrings = new string[enums.Length];
             for(int i=0; i< enums.Length; i++){
                 string t = EnumStringToHuman(Helpers.EnumToString<E>(enums[i]));
-                if(t=="All"){ t= $"{t} Cards";}
-                if(t=="Row"){ t= $"In Lane";}
-                if(t=="Battlefield"){ t= $"On {t}";}
+                switch(t){
+                    case "All"          : t= $"{t} Cards";  break;
+                    case "Battlefield"  : t= $"On {t}";     break;
+                    case "Row"          : t= $"In Lane";    break;
+                    case "Card"         : t= $"{Mathf.Max(cardCount,1)} Card{(cardCount>1 ? "s" :"")}"; break;                    
+                    case "Random"       : 
+                    case "Strongest"    :
+                    case "Weakest"      : t= $"{Mathf.Max(cardCount,1)} {t} Card{(cardCount>1 ? "s" :"")}"; break;
+                }
                 enumstrings[i] = t;
             }
             Array.Reverse(enumstrings);

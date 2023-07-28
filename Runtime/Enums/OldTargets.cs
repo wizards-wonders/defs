@@ -1,4 +1,4 @@
-namespace Pixelakes.Wrath.Enums {
+/*namespace Pixelakes.Wrath.Enums {
 
 	public enum OldTarget{
 		None					= 0, //No Target
@@ -56,3 +56,4 @@ namespace Pixelakes.Wrath.Enums {
 		AllOpponentStealth		= 619, //All Opponent cards cards that are currently in Stealth
    }
 }
+*/
