@@ -111,7 +111,7 @@ namespace Pixelakes.Wrath{
         /// Returns a formated string we can use in UI Text
         /// </summary>
         /// <returns></returns>
-        public virtual string RichStringify(){
+        public virtual string RichStringify(bool drawName=false){
             string triggerColor   = "#FFAD09";
             string offeringColor ="#FF6600";
             string badColor      = "#FC003F";
@@ -119,17 +119,17 @@ namespace Pixelakes.Wrath{
             string modColor     = "#6846BD";
 
             string rs = "";
-            if(Name.Length>1) rs=$"{Name}\n";
+            if(drawName && Name.Length>1) rs=$"\n{Name}\n";
 
             string actionValueString = ActionValue==0 ? ActionString : $"{ActionString} {(ActionValue>0 ? $"+{ActionValue}" : $"-{ActionValue}" )}";
             
             string actionColor = ActionValue==0 ? modColor: (ActionValue<0 ? badColor : goodColor);
             rs+= $"<b><color={triggerColor}>{TriggerString}</color></b><color={actionColor}> - {actionValueString}</color>\n";
-            rs+= EnumArrayToString<Target>(actionTarget, TargetCount);
+            rs+= EnumArrayToString<Target>(ActionTarget, TargetCount);
 
-            if(offering != Enums.Effect.None) {
+            if(Offering != Effect.None) {
                 rs += $"\n<b><color={offeringColor}>Scerifice</color></b> {OfferingString} {OfferingValue} {OfferingTargetString}";
-            }
+            }rs+="\n";
             return rs.Replace("None", "");
         }
 
