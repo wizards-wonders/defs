@@ -177,6 +177,12 @@ namespace Pixelakes.Wrath{
            Target.Random,		
            Target.Card,			
         });
+
+        public static IEnumerable<string> Power => Only(new List<Target>{
+            Target.All,			
+            Target.Random,		
+            Target.Card
+        });
     }
     
     /// <summary>
@@ -258,6 +264,8 @@ namespace Pixelakes.Wrath{
                 case (int)Target.SubType     : targets = TargetTargets.Row.ToList<string>(); break;
                 case (int)Target.Hand        : targets = TargetTargets.Hand.ToList<string>(); break;
                 case (int)Target.Deck        : targets = TargetTargets.Deck.ToList<string>(); break;
+                case (int)Target.Weakest     :
+                case (int)Target.Strongest   : targets = TargetTargets.Power.ToList<string>(); break;
                 default: break; // no valid targets 
             }
 
