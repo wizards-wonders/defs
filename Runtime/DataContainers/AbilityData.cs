@@ -32,6 +32,7 @@ namespace Pixelakes.Wrath{
         [SerializeField, JsonProperty] protected int      uses          = 1;    // How many times ability can be invoked durning the cards life
         [SerializeField, JsonProperty] protected bool     targetsSelf   = false;// if card should be included with the target
         [SerializeField, JsonProperty] protected bool[]   lanes;                // the lane the card needs to sit for the ability to be usable
+        [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Rarity rarity;
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public AbilityType   type;                   // Triggered or User Activated
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Trigger       trigger;                // Trigger that invokes uses
         [JsonProperty, JsonConverter(typeof(StringEnumConverter))] public Effect        triggerEffect;          // The action (Effect) that invokes uses if Trigger is Effect    
@@ -61,6 +62,7 @@ namespace Pixelakes.Wrath{
     */
         public string       Name                    => name;
         public string       Description             => description;
+        public Rarity       Rarity                  => rarity;
         public AbilityType  Type                    => type;                    // if trigger is auto or user fired
 
         public Trigger      Trigger                 => trigger;                 // what triggers the action   
