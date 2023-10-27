@@ -10,6 +10,7 @@ namespace Pixelakes.Wrath.Enums {
 		Lane1				= 106, //The first lane closet to the center of the board
 		Lane2				= 107, //The center lane of the board
 		Lane3				= 108, //The last lane farthest from the center of the board
+		Neighbor				= 109, //One Neighboring card
 		Strongest				= 200, //Strongest Card
 		Weakest				= 201, //Weakest Card
 		Effect				= 202, //Targets Cards With (x)Effect Applied

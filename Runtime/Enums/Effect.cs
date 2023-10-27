@@ -16,6 +16,7 @@ namespace Pixelakes.Wrath.Enums {
 		Teleport				= 402, //Moves card to a new row
 		Protection				= 403, //Bubble protection absorbs next damage
 		Silence				= 404, //Removes any status effects
+		Curse				= 405, //Removes Card's Abilities
 		Reveal				= 500, //Shows Card to other player
 		Shuffle				= 501, //Shuffle the deck
 		Draw				= 502, //Draw additional card

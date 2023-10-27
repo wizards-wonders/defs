@@ -254,16 +254,17 @@ namespace Pixelakes.Wrath{
             List<string> targets = new List<string>();
             switch (target){
                 case (int)Target.Battlefield : targets = TargetTargets.Battlefield.ToList<string>(); break;
-                case (int)Target.Row         : targets = TargetTargets.Row.ToList<string>(); break;
-                
-                case (int)Target.Lane1         : targets = TargetTargets.Row.ToList<string>(); break;
-                case (int)Target.Lane2         : targets = TargetTargets.Row.ToList<string>(); break;
-                case (int)Target.Lane3         : targets = TargetTargets.Row.ToList<string>(); break;
-
                 case (int)Target.Effect      : targets = TargetTargets.Effect.ToList<string>(); break;
-                case (int)Target.SubType     : targets = TargetTargets.Row.ToList<string>(); break;
                 case (int)Target.Hand        : targets = TargetTargets.Hand.ToList<string>(); break;
                 case (int)Target.Deck        : targets = TargetTargets.Deck.ToList<string>(); break;
+                
+                case (int)Target.OpposingRow : 
+                case (int)Target.Row         :                
+                case (int)Target.Lane1       :
+                case (int)Target.Lane2       :
+                case (int)Target.Lane3       :                
+                case (int)Target.SubType     : targets = TargetTargets.Row.ToList<string>(); break;
+               
                 case (int)Target.Weakest     :
                 case (int)Target.Strongest   : targets = TargetTargets.Power.ToList<string>(); break;
                 default: break; // no valid targets 
