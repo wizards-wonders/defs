@@ -206,7 +206,7 @@ namespace Pixelakes.Wrath{
     public class Effects : EnumFilter<Effect>{
         public static IEnumerable<string> TypeActivated => Filtered(new List<Effect>(){Effect.Retaliate});       
         public static IEnumerable<string> TypeTrigger   => Filtered();
-        public static IEnumerable<string> Offering      => Only(new List<Effect>(){Effect.Damage, Effect.Destroy, Effect.Lock, Effect.Teleport, Effect.Silence, Effect.Return, Effect.Shuffle });
+        public static IEnumerable<string> Offering      => Only(new List<Effect>(){Effect.Damage, Effect.Destroy, Effect.Lock, Effect.Teleport, Effect.Silence, Effect.Curse, Effect.Shuffle });
     }
     
     public class WrathEnum{
