@@ -157,37 +157,46 @@ namespace Pixelakes.Wrath{
 
 
 
-        public AbilityData Clone(){
+        public ClonedAbility Clone(){
             AbilityData clone = new AbilityData();
-            clone.name = name;
-            clone.description = description;
-            clone.actionValue = actionValue;
-            clone.offeringValue = offeringValue;
-            clone.targetCount = targetCount;
-            clone.offeringCount = offeringCount;
-            clone.uses = uses;
-            clone.targetsSelf = targetsSelf;
-            clone.lanes = lanes != null ? (bool[])lanes.Clone() : null;
-            clone.rarity = rarity;
-            clone.type = type;
-            clone.trigger = trigger;
-            clone.triggerEffect = triggerEffect;
-            clone.action = action;
-            clone.offering = offering;
-            clone.actionTarget = actionTarget != null ? (Target[])actionTarget.Clone() : null;
-            clone.offeringTarget = offeringTarget != null ? (Target[])offeringTarget.Clone() : null;
-            clone.triggerTarget = triggerTarget != null ? (Target[])triggerTarget.Clone() : null;
-            clone.actionEffectTarget = actionEffectTarget;
-            clone.offeringEffectTarget = offeringEffectTarget;
-            clone.triggerEffectTarget = triggerEffectTarget;
-            clone.actionSubTypeTarget = actionSubTypeTarget;
+            clone.name                  = name;
+            clone.description           = description;
+            clone.actionValue           = actionValue;
+            clone.offeringValue         = offeringValue;
+            clone.targetCount           = targetCount;
+            clone.offeringCount         = offeringCount;
+            clone.uses                  = uses;
+            clone.targetsSelf           = targetsSelf;
+            clone.lanes                 = lanes != null ? (bool[])lanes.Clone() : null;
+            clone.rarity                = rarity;
+            clone.type                  = type;
+            clone.trigger               = trigger;
+            clone.triggerEffect         = triggerEffect;
+            clone.action                = action;
+            clone.offering              = offering;
+            clone.actionTarget          = actionTarget != null ? (Target[])actionTarget.Clone() : null;
+            clone.offeringTarget        = offeringTarget != null ? (Target[])offeringTarget.Clone() : null;
+            clone.triggerTarget         = triggerTarget != null ? (Target[])triggerTarget.Clone() : null;
+            clone.actionEffectTarget    = actionEffectTarget;
+            clone.offeringEffectTarget  = offeringEffectTarget;
+            clone.triggerEffectTarget   = triggerEffectTarget;
+            clone.actionSubTypeTarget   = actionSubTypeTarget;
             clone.offeringSubTypeTarget = offeringSubTypeTarget;
-            clone.triggerSubTypeTarget = triggerSubTypeTarget;
-            clone.actionEntity = actionEntity;
-            clone.offeringEntity = offeringEntity;
-            clone.triggerEntity = triggerEntity;
-            return clone;
+            clone.triggerSubTypeTarget  = triggerSubTypeTarget;
+            clone.actionEntity          = actionEntity;
+            clone.offeringEntity        = offeringEntity;
+            clone.triggerEntity         = triggerEntity;
+            return (ClonedAbility)clone;
         }
 
     }
+
+    public class ClonedAbility : AbilityData{
+        public void SetActionValue(int v)   => actionValue      = v;
+        public void SetOfferingValue(int v) => offeringValue    = v;
+        public void SetTargetCount(int v)   => targetCount      = v;
+        public void SetOfferingCount(int v) => offeringCount    = v;
+        public void SetUses(int v)          => uses             = v;
+    }
+    
 }
