@@ -158,7 +158,7 @@ namespace Pixelakes.Wrath{
 
 
         public ClonedAbility Clone(){
-            AbilityData clone = new AbilityData();
+            ClonedAbility clone = new ClonedAbility();
             clone.name                  = name;
             clone.description           = description;
             clone.actionValue           = actionValue;
@@ -186,11 +186,11 @@ namespace Pixelakes.Wrath{
             clone.actionEntity          = actionEntity;
             clone.offeringEntity        = offeringEntity;
             clone.triggerEntity         = triggerEntity;
-            return (ClonedAbility)clone;
+            return clone;
         }
 
     }
-
+    [Serializable, JsonObject(MemberSerialization.OptIn)]
     public class ClonedAbility : AbilityData{
         public void SetActionValue(int v)   => actionValue      = v;
         public void SetOfferingValue(int v) => offeringValue    = v;
