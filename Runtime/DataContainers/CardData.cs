@@ -25,7 +25,7 @@ namespace Pixelakes.Wrath{
         [SerializeField, JsonProperty, JsonConverter(typeof(StringEnumConverter))] protected Type     type;
         [SerializeField, JsonProperty, JsonConverter(typeof(StringEnumConverter))] protected Faction  faction;
         [SerializeField, JsonProperty, JsonConverter(typeof(StringEnumConverter))] protected SubType  subType;
-        [SerializeField, JsonProperty, JsonConverter(typeof(StringEnumConverter))] protected Trait[]  trait;
+        [SerializeField, JsonProperty, JsonConverter(typeof(TraitArrayConverter))] protected Trait[]  trait;
         [SerializeField, JsonProperty, JsonConverter(typeof(StringEnumConverter))] protected Rarity   rarity;
         [SerializeField, JsonProperty] protected SeriesData series;
 
