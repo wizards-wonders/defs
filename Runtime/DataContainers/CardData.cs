@@ -54,7 +54,7 @@ namespace Pixelakes.Wrath{
         public Type         Type        => type;
         public Faction      Faction     => faction;
         public SubType      SubType     => subType;
-        public Trait[]      Trait       => trait;
+        public Trait[]      Traits      => trait;
         public Rarity       Rarity      => rarity;
         public SeriesData   Series      => series;
         public AbilityData[] Abilities  => abilities;
