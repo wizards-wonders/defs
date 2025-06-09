@@ -2,7 +2,7 @@ namespace Pixelakes.Wrath.Enums {
 	public enum Effect{
 		None				= 0, //No Effect
 		Heal				= 100, //Give Power Points to card
-		Immune				= 101, //Cannot be damaged or targetted
+		Immune				= 101, //Cannot be damaged or take any negitive effect
 		Resurrect				= 102, //Move card back to (hand or deck) from graveyard
 		Reincarnation				= 103, //Come back to life on death with init state
 		Damage				= 200, //Take Power Points from a card
@@ -26,5 +26,6 @@ namespace Pixelakes.Wrath.Enums {
 		Consume				= 700, //Consumes power from other cards destroying them
 		Absorb				= 701, //Absorbs damage on other cards up current power destroying self
 		Displace				= 702, //Destributes its power as damage to foes or power to friends and destroys self
+		Entranced				= 800, //Negates its power to take away from the total battle points
    }
 }
